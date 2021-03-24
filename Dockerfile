@@ -27,4 +27,4 @@ RUN conda create -n rd python=3.8 && \
 WORKDIR /opt/rd
 RUN chgrp -R 0 /opt/rd/ && \
     chmod -R g+rwX /opt/rd/
-
+ 
