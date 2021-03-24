@@ -1,7 +1,7 @@
 ARG CUDA_VERSION=10.2
 ARG RAPIDS_VERSION=0.18
 ARG OS_PLATFORM=ubi8
-FROM nvidia/cuda:${CUDA_VERSION}-base-${OS_PLATFORM}
+FROM nvcr.io/nvidia/cuda:${CUDA_VERSION}-base-${OS_PLATFORM}
 
 # Labels
 LABEL org.opencontainers.image.authors="Don Chesworth <donald.chesworth@gmail.com>"
