@@ -1,13 +1,13 @@
 ARG CUDA_VERSION=10.2
 ARG RAPIDS_VERSION=0.18
 ARG OS_PLATFORM=ubi8
-FROM nvidia/cuda:${CUDA_VERSION}-base-${OS_PLATFORM}
+FROM nvcr.io/nvidia/cuda:${CUDA_VERSION}-base-${OS_PLATFORM}
 
 # Labels
-LABEL maintainer="Don Chesworth<donald.chesworth@gmail.com>"
-LABEL org.label-schema.schema-version="0.2"
-LABEL org.label-schema.name="rapids-dask-ubi8"
-LABEL org.label-schema.description="a small base image for using dask and dask_cudf on Red Hat"
+LABEL org.opencontainers.image.authors="Don Chesworth <donald.chesworth@gmail.com>"
+LABEL org.opencontainers.image.url="https://github.com/donchesworth/rapids-dask-pytorch-images"
+LABEL org.opencontainers.image.source="https://github.com/donchesworth/rapids-dask-pytorch-images"
+LABEL org.opencontainers.image.version="py38-r10.2-ubi8"
 
 # Install gcc, postgres, conda
 ENV PATH="/opt/conda/envs/rd/bin:/opt/conda/bin:$PATH"
