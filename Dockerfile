@@ -20,7 +20,7 @@ RUN yum install -y wget gcc gcc-c++ glibc-devel make postgresql-devel && \
 RUN conda create -n rdp -y python=3.8 && \
     conda install --name rdp -y -c pytorch pytorch=${PYTORCH_VERSION} torchvision && \
     conda clean --all
-# conda package installs - rapids
+# conda package installs - rapids 
 RUN conda install --name rdp -y -c rapidsai -c nvidia -c conda-forge -c defaults \
     cudf=${RAPIDS_VERSION} cuml=${RAPIDS_VERSION} dask-cudf=${RAPIDS_VERSION} \
     dask-cuda=${RAPIDS_VERSION} cudatoolkit=${CUDA_VERSION} && \
