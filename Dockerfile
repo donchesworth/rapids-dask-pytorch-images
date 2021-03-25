@@ -16,7 +16,7 @@ RUN yum install -y wget gcc gcc-c++ glibc-devel make postgresql-devel && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     chmod +x ~/miniconda.sh &&  ~/miniconda.sh -b -p /opt/conda && conda update conda
 
-# conda package installs
+# conda package installs - both rapids and pytorch
 RUN conda create -n rdp python=3.8 && \
     conda install --name rdp -c rapidsai -c nvidia -c conda-forge -c defaults \
     -c pytorch pytorch=${PYTORCH_VERSION} torchvision \
