@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.url="https://github.com/donchesworth/rapids-dask-
 LABEL org.opencontainers.image.source="https://github.com/donchesworth/rapids-dask-pytorch-images"
 LABEL org.opencontainers.image.version="py38-cuda10.2-rapids0.18-pytorch1.8-ubi8"
 # Install gcc, postgres, conda
-ENV PATH="/opt/conda/envs/rd/bin:/opt/conda/bin:$PATH"
+ENV PATH="/opt/conda/envs/rdp/bin:/opt/conda/bin:$PATH"
 RUN yum install -y wget gcc gcc-c++ glibc-devel make postgresql-devel && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     chmod +x ~/miniconda.sh &&  ~/miniconda.sh -b -p /opt/conda && conda update conda
@@ -24,6 +24,6 @@ RUN conda install --name rdp -c rapidsai -c nvidia -c conda-forge -c defaults \
     dask-cuda=${RAPIDS_VERSION} cudatoolkit=${CUDA_VERSION} && \
     conda clean --all
 # Setup working dir
-WORKDIR /opt/rd
-RUN chgrp -R 0 /opt/rd/ && \
-    chmod -R g+rwX /opt/rd/
+WORKDIR /opt/rdp
+RUN chgrp -R 0 /opt/rdp/ && \
+    chmod -R g+rwX /opt/rdp/
