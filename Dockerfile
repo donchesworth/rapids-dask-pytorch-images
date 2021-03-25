@@ -1,6 +1,6 @@
 ARG CUDA_VERSION=10.2
 ARG RAPIDS_VERSION=0.18
-ARG PYTORCH_VERSION=1.7.0
+ARG PYTORCH_VERSION=1.8.0
 ARG OS_PLATFORM=ubi8
 FROM nvcr.io/nvidia/cuda:${CUDA_VERSION}-base-${OS_PLATFORM}
 
@@ -17,11 +17,11 @@ RUN yum install -y wget gcc gcc-c++ glibc-devel make postgresql-devel && \
     chmod +x ~/miniconda.sh &&  ~/miniconda.sh -b -p /opt/conda && conda update conda
 
 # conda package installs - both rapids and pytorch
-RUN conda create -n rdp python=3.8 && \
-    conda install --name rdp -c pytorch pytorch=${PYTORCH_VERSION} torchvision && \
+RUN conda create -n rdp -y python=3.8 && \
+    conda install --name rdp -y -c pytorch pytorch=${PYTORCH_VERSION} torchvision && \
     conda clean --all
 
-RUN conda install --name rdp -c rapidsai -c nvidia -c conda-forge -c defaults \
+RUN conda install --name rdp -y -c rapidsai -c nvidia -c conda-forge -c defaults \
     cudf=${RAPIDS_VERSION} cuml=${RAPIDS_VERSION} dask-cudf=${RAPIDS_VERSION} \
     dask-cuda=${RAPIDS_VERSION} cudatoolkit=${CUDA_VERSION} && \
     conda clean --all
